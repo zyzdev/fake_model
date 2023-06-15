@@ -1,0 +1,16 @@
+name: example
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: '>=2.19.3 <3.0.0'
+
+dependencies:
+  fake_model:
+    path: ../../fake_model
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
+
