@@ -180,13 +180,13 @@ Info _$InfoFromFake() => Info(
     );
 ```
 
-[example]: https://github.com/google/json_serializable.dart/tree/master/example
+[example]: https://github.com/zyzdev/fake_model/tree/main/example
 
 [dart build system]: https://github.com/dart-lang/build
 
-[`FakeModel`]: https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonSerializable-class.html
+[`FakeModel`]: https://pub.dev/documentation/fake_model/latest/fake_model/FakeModel-class.html
 
-[`FakeConfig`]: https://pub.dev/documentation/json_annotation/4.8.1/json_annotation/JsonSerializable-class.html
+[`FakeConfig`]: https://pub.dev/documentation/fake_model/latest/fake_model/FakeConfig-class.html
 
 [`bool`]: https://api.dart.dev/stable/dart-core/bool-class.html
 

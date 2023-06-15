@@ -1,6 +1,6 @@
 import 'package:meta/meta_meta.dart';
 
-/// This is an annotation for [fake_model] to specify a class to generate code for.
+/// This is an annotation for [fake_model](https://pub.dev/packages/fake_model) to specify a class to generate code for.
 @Target({TargetKind.classType})
 class FakeModel {
   const FakeModel({this.randomValue = true});

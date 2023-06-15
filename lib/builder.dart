@@ -23,7 +23,8 @@ class FakeBuilder implements Builder {
       info,
       _addFileIntroduction(
         _addPartKeyword(
-          modelFileName, Generator.startGen(classElements),
+          modelFileName,
+          Generator.startGen(classElements),
         ),
       ),
     );
@@ -35,7 +36,7 @@ class FakeBuilder implements Builder {
   };
 
   String _addFileIntroduction(String code) {
-    return '/// Code was generate by [fake_model](https://translate.google.com/?sl=en&tl=zh-TW&text=was%20generate%20by%20%5Bfake_model%5D&op=translate)\n\n'
+    return '/// Code was generate by [fake_model](https://pub.dev/packages/fake_model)\n\n'
         '$code';
   }
 

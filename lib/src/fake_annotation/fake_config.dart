@@ -1,6 +1,6 @@
 import 'package:meta/meta_meta.dart';
 
-/// This is an annotation for [fake_model] to specify a property generating configuration.
+/// This is an annotation for [fake_model](https://pub.dev/packages/fake_model) to specify a property generating configuration.
 @Target({TargetKind.field})
 class FakeConfig {
   const FakeConfig({

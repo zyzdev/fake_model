@@ -1,4 +1,4 @@
-/// Code was generate by [fake_model](https://translate.google.com/?sl=en&tl=zh-TW&text=was%20generate%20by%20%5Bfake_model%5D&op=translate)
+/// Code was generate by [fake_model](https://pub.dev/packages/fake_model)
 
 part of 'example.dart';
 
@@ -8,7 +8,7 @@ PersonalInfo _$PersonalInfoFromFake() => PersonalInfo(
       married: boolGenerator(),
       age: intGenerator(minValue: -100, maxValue: 100),
       height: doubleGenerator(minValue: 0, maxValue: 10000.0),
-      weight: null,
+      weight: numGenerator(minValue: 0, maxValue: 10000.0),
       gender: enumGenerator<Gender>(Gender.values),
       friends: [
         stringGenerator('PersonalInfo', 'friends'),
