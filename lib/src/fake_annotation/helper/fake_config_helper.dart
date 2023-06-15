@@ -29,10 +29,10 @@ class FakeConfigHelper {
     } else if (type.isDartCoreIterable || type.isDartCoreList) {
       // list or iterable or set
       value = _genParameterValue(type, fieldDartObject.toString());
-    } else if (type.isDartCoreSet){
+    } else if (type.isDartCoreSet) {
       // set
       value = _genParameterValue(type, fieldDartObject.toString());
-    }else if (type.isDartCoreMap) {
+    } else if (type.isDartCoreMap) {
       // map
       value = _genParameterValue(type, fieldDartObject.toMapValue().toString());
       //value = fieldDartObject.toMapValue().toString();
@@ -42,7 +42,6 @@ class FakeConfigHelper {
       final isCustomizeClass =
           type is InterfaceType ? isCustomClass(type.constructors) : false;
       if (isCustomizeEnum || isCustomizeClass) {
-
         value = _genParameterValue(type, fieldDartObject.toString());
         return value;
       }
@@ -262,8 +261,7 @@ class FakeConfigHelper {
   static List<String> extractValuesFromString(String valueString,
       {bool isSet = false}) {
     List<String> values = [];
-    final tmp =
-    valueString.substring(
+    final tmp = valueString.substring(
         valueString.indexOf(isSet ? '({' : '([') + 2, valueString.length - 2);
     List<String> leftSymbol = [];
     bool startFindTypeName = true;
@@ -297,14 +295,14 @@ class FakeConfigHelper {
           }
         }
       }
-      if(startFindTypeName) {
-        if(leftSymbol.length == 1 && leftSymbol.first == '(') {
+      if (startFindTypeName) {
+        if (leftSymbol.length == 1 && leftSymbol.first == '(') {
           // find type name and start to find value
           startFindTypeName = false;
           startFindValue = true;
           print(String.fromCharCodes(runes.sublist(indexStart, i + 1)).trim());
         }
-       continue;
+        continue;
       }
       if (leftSymbol.isEmpty) {
         if (startFindValue) {
@@ -314,7 +312,7 @@ class FakeConfigHelper {
           } else {
             findValue = i + 1 == runes.length;
           }
-          if(findValue) {
+          if (findValue) {
             final itemValue =
                 String.fromCharCodes(runes.sublist(indexStart, i + 1)).trim();
             // skip ','
@@ -334,8 +332,8 @@ class FakeConfigHelper {
   static List<MapEntry<String, String>> extractMapValueStringFromString(
       String valueString) {
     final List<MapEntry<String, String>> keyAndValues = [];
-    final tmp =
-        valueString.substring(valueString.indexOf('{') + 1, valueString.length - 1);
+    final tmp = valueString.substring(
+        valueString.indexOf('{') + 1, valueString.length - 1);
     List<String> leftSymbol = [];
     bool startFindKey = true;
     bool startFindValue = false;
