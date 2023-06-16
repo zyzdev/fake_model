@@ -78,8 +78,7 @@ abstract class Generator {
     if (!randomValue) {
       final upperCamelCaseName =
           '${name.substring(0, 1).toUpperCase()}${name.substring(1)}';
-      print(upperCamelCaseName);
-      final valueName = '_fake$name';
+      final valueName = '_fake$upperCamelCaseName';
       final finalValue = 'final $valueName = $code;';
       return '$finalValue \n$name _\$${name}FromFake() => $valueName;';
     } else {

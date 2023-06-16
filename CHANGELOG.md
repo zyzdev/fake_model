@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Remove debug log.
+
 ## 0.0.3
 
 - Update doc.
