@@ -5,8 +5,8 @@ import 'package:meta/meta_meta.dart';
 class FakeModel {
   const FakeModel({this.randomValue = true});
 
-  /// Decide `fake model generative function` will return `final model` or `new instance model`.
-  /// The property value of `final model` was decided once when 'fake model generative function' was generated,
+  /// Decide `fake model generation function` will return `final model` or `new instance model`.
+  /// The property value of `final model` was decided once when 'fake model generation function' was generated,
   /// it means call `Model.fromFake()` will get same result each time.
   /// The property value of `new instance model` will generate randomly,
   /// it means call `Model.fromFake()` will get different result each time,

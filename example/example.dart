@@ -4,7 +4,7 @@ import 'package:fake_model/fake_model.dart';
 /// Don't forget adding the part file.
 part 'example.fake.g.dart';
 
-/// [FakeModel.randomValue] to decide the fake model generative function [_$PersonalInfoFromFake]
+/// [FakeModel.randomValue] to decide the fake model generation function [_$PersonalInfoFromFake]
 /// to return `final model` or `new instance model`.
 /// The property value of `final model` was decided once when 'example.fake.g.dart' was generated.
 /// The property value of `new instance model` will generate randomly,
@@ -66,8 +66,8 @@ class PersonalInfo {
   )
   final SecretInfo secretInfo;
 
-  /// Call the generated fake model generative function [_$PersonalInfoFromFake].
-  /// The format of fake model generative function is '_$[Class Name]FromFake()'.
+  /// Call the generated fake model generation function [_$PersonalInfoFromFake].
+  /// The format of fake model generation function is '_$[Class Name]FromFake()'.
   factory PersonalInfo.fromFake() => _$PersonalInfoFromFake();
 
   @override
@@ -88,10 +88,7 @@ class Bank {
   }
 }
 
-enum Gender {
-  male,
-  female;
-}
+enum Gender { male, female }
 
 class SecretInfo {
   final int realAge;
