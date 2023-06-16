@@ -1,4 +1,4 @@
-## 0.0.2-dev.1
+## 0.0.2
 
 - Fix bug.
 - Update doc.

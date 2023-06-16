@@ -1,4 +1,5 @@
 import 'package:build/build.dart';
+import 'package:dart_style/dart_style.dart';
 import 'package:fake_model/src/fake_annotation/helper/fake_model_helper.dart';
 import 'package:fake_model/src/generator/generator.dart';
 
@@ -18,15 +19,16 @@ class FakeBuilder implements Builder {
     if (classElements.isEmpty) return;
     final modelFileName = buildStep.inputId.pathSegments.last;
     final info = buildStep.inputId.changeExtension('.fake.g.dart');
-
+    final code = _addFileIntroduction(
+      _addPartKeyword(
+        modelFileName,
+        Generator.startGen(classElements),
+      ),
+    );
+    final output = DartFormatter().format(code);
     await buildStep.writeAsString(
       info,
-      _addFileIntroduction(
-        _addPartKeyword(
-          modelFileName,
-          Generator.startGen(classElements),
-        ),
-      ),
+      output,
     );
   }
 
@@ -41,6 +43,6 @@ class FakeBuilder implements Builder {
   }
 
   String _addPartKeyword(String fileName, String code) {
-    return 'part of \'$fileName\';\n\n$code';
+    return 'part of \'$fileName\';\n$code';
   }
 }

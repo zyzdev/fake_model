@@ -1,7 +1,7 @@
 name: fake_model
 description: Automatically generate code for create fake model by annotating Dart classes.
 repository: https://github.com/zyzdev/fake_model
-version: 0.0.2-dev.1
+version: 0.0.2
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
@@ -18,4 +18,5 @@ dependencies:
   dart_style: ^2.3.1
 
 dev_dependencies:
+  lints: ^2.0.0
   build_runner: ^2.1.0

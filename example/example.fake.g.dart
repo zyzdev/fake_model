@@ -2,17 +2,16 @@
 
 part of 'example.dart';
 
-
 // ==========================================================================
 // Class: PersonalInfo
 // Model type: final model
 // ==========================================================================
-final _fake_PersonalInfo_model = PersonalInfo(
+final _fakePersonalInfo = PersonalInfo(
   name: 'Jerry',
   married: false,
-  age: -97,
-  height: 4230.758963123554,
-  weight: null,
+  age: -40,
+  height: null,
+  weight: 1791.0,
   gender: Gender.male,
   friends: [
     'PersonalInfo_friends_1',
@@ -21,10 +20,10 @@ final _fake_PersonalInfo_model = PersonalInfo(
   ],
   bankAccounts: {
     'PersonalInfo_bankAccounts_1': Bank(
-      6202,
+      6576,
     ),
     'PersonalInfo_bankAccounts_2': Bank(
-      1814,
+      4033,
     )
   },
   secretInfo: SecretInfo(
@@ -34,8 +33,7 @@ final _fake_PersonalInfo_model = PersonalInfo(
     lover: 'fake_model',
   ),
 );
-PersonalInfo _$PersonalInfoFromFake() => _fake_PersonalInfo_model;
-
+PersonalInfo _$PersonalInfoFromFake() => _fakePersonalInfo;
 // ==========================================================================
 // Class: Bank
 // Model type: new instance model

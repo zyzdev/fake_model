@@ -112,8 +112,8 @@ class SecretInfo {
   }
 }
 
-void main () {
-  for(int i = 0; i < 10; i++) {
+void main() {
+  for (int i = 0; i < 10; i++) {
     print(PersonalInfo.fromFake());
   }
 }

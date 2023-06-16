@@ -3,7 +3,6 @@ import 'dart:mirrors';
 
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
-import 'package:dart_style/dart_style.dart';
 import 'package:fake_model/src/fake_annotation/fake_config.dart';
 import 'package:fake_model/src/fake_annotation/fake_model.dart';
 import 'package:fake_model/src/fake_annotation/helper/fake_config_helper.dart';
@@ -70,14 +69,17 @@ abstract class Generator {
       name,
       randomValue,
     );
-    return DartFormatter().format(codeOutput);
+    return codeOutput;
   }
 
   String _wrapToFakeFunction(
       ClassElement element, String code, bool randomValue) {
     final name = element.displayName;
     if (!randomValue) {
-      final valueName = '_fake_${name}_model';
+      final upperCamelCaseName =
+          '${name.substring(0, 1).toUpperCase()}${name.substring(1)}';
+      print(upperCamelCaseName);
+      final valueName = '_fake$name';
       final finalValue = 'final $valueName = $code;';
       return '$finalValue \n$name _\$${name}FromFake() => $valueName;';
     } else {
