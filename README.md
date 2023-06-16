@@ -13,6 +13,7 @@ generating configuration of property value.
 * To generate a class model property, you can annotate it with [`FakeConfig`] to config the value generating rule.
 
 ## Usage
+More info see [example].
 
 Assume there has a model class `Info` written in `info.dart` with annotation [`FakeModel`]:
 

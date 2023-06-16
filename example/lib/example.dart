@@ -10,7 +10,7 @@ part 'example.fake.g.dart';
 /// The property value of `new instance model` will generate randomly,
 /// it means call `PersonalInfo.fromFake()` will get different result each time,
 /// except you annotating property with [FakeConfig.defaultValue].
-@FakeModel(randomValue: true)
+@FakeModel(randomValue: false)
 class PersonalInfo {
   PersonalInfo({
     required this.name,
@@ -76,6 +76,7 @@ class PersonalInfo {
   }
 }
 
+@FakeModel()
 class Bank {
   final int money;
 

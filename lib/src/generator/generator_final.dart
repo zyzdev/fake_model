@@ -9,7 +9,6 @@ import 'package:fake_model/src/util.dart';
 import 'generator.dart';
 
 class GeneratorConst extends Generator {
-
   @override
   Object? genParameterValue(DartType type, FakeValueConfig valueConfig,
       [String prefix = '', String propertyName = '']) {
@@ -19,7 +18,8 @@ class GeneratorConst extends Generator {
       return value;
     }
 
-    var isCustomizeClass = type is InterfaceType ? isCustomClass(type.constructors) : false;
+    var isCustomizeClass =
+        type is InterfaceType ? isCustomClass(type.constructors) : false;
     var isCustomizeEnum = type is InterfaceType ? isCustomEnum(type) : false;
 
     if (type.nullabilitySuffix == NullabilitySuffix.question) {
@@ -29,14 +29,18 @@ class GeneratorConst extends Generator {
     if (isCustomizeEnum) {
       // enum
       var enumElement = type.element.declaration as EnumElement;
-      var enumMember = enumElement.fields.where((element) => !element.type.isDartCoreList).toList();
+      var enumMember = enumElement.fields
+          .where((element) => !element.type.isDartCoreList)
+          .toList();
       var size = enumMember.length;
       var index = Random().nextInt(size);
       value = '${enumElement.name}.${enumMember[index].name}';
     } else if (isCustomizeClass) {
       // enum
-      var constructorElement = type.constructors.firstWhere((element) => element.name.isEmpty);
-      value = genConstructorElement(constructorElement, '$prefix${propertyName.isNotEmpty ? '_$propertyName' : ''}');
+      var constructorElement =
+          type.constructors.firstWhere((element) => element.name.isEmpty);
+      value = genConstructorElement(constructorElement,
+          '$prefix${propertyName.isNotEmpty ? '_$propertyName' : ''}');
     } else if (type.isDartCoreBool) {
       // boolean
       value = '${Random().nextBool()}';
@@ -48,13 +52,17 @@ class GeneratorConst extends Generator {
       value = '${Random().nextInt(baseValue) + minValue}';
     } else if (type.isDartCoreDouble) {
       // double
-      final maxValue = max(valueConfig.minValue, valueConfig.maxValue).toDouble();
-      final minValue = min(valueConfig.minValue, valueConfig.maxValue).toDouble();
+      final maxValue =
+          max(valueConfig.minValue, valueConfig.maxValue).toDouble();
+      final minValue =
+          min(valueConfig.minValue, valueConfig.maxValue).toDouble();
       final baseValue = maxValue - minValue;
       value = '${Random().nextDouble() * baseValue + minValue}';
     } else if (type.isDartCoreNum) {
-      final maxValue = max(valueConfig.minValue, valueConfig.maxValue).toDouble();
-      final minValue = min(valueConfig.minValue, valueConfig.maxValue).toDouble();
+      final maxValue =
+          max(valueConfig.minValue, valueConfig.maxValue).toDouble();
+      final minValue =
+          min(valueConfig.minValue, valueConfig.maxValue).toDouble();
       final baseValue = maxValue - minValue;
       // num
       var r = Random();
@@ -69,10 +77,14 @@ class GeneratorConst extends Generator {
       value = '\'${prefix}_'
           '${propertyName.isNotEmpty ? '${propertyName}_' : ''}$cnt\'';
       Generator.strPropertyNameCnt[key] = cnt;
-    } else if (type.isDartCoreIterable || type.isDartCoreList || type.isDartCoreSet) {
+    } else if (type.isDartCoreIterable ||
+        type.isDartCoreList ||
+        type.isDartCoreSet) {
       var typeArguments = (type as InterfaceType).typeArguments;
-      var values = List.generate(valueConfig.itemSize,
-          (index) => genParameterValue(typeArguments[0], valueConfig, prefix, propertyName));
+      var values = List.generate(
+          valueConfig.itemSize,
+          (index) => genParameterValue(
+              typeArguments[0], valueConfig, prefix, propertyName));
       value = type.isDartCoreSet ? '${values.toSet()}' : '$values';
     } else if (type.isDartCoreMap) {
       var typeArguments = (type as InterfaceType).typeArguments;

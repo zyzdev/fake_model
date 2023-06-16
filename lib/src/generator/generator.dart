@@ -16,7 +16,8 @@ abstract class Generator {
   static const defConfig = FakeValueConfig();
   static Map<String, int> strPropertyNameCnt = {};
 
-  static final Map<String, Map<String, FakeValueConfig>> _allFakeValueConfig = {};
+  static final Map<String, Map<String, FakeValueConfig>> _allFakeValueConfig =
+      {};
 
   static void cleanPropertyNameCnt() => strPropertyNameCnt.clear();
 
@@ -33,8 +34,9 @@ abstract class Generator {
     }
   }
 
-  static Generator _generatorSelector(bool randomValue) =>
-      randomValue ? _generatorRandom ??= GeneratorRandom() : _generatorConst ??= GeneratorConst();
+  static Generator _generatorSelector(bool randomValue) => randomValue
+      ? _generatorRandom ??= GeneratorRandom()
+      : _generatorConst ??= GeneratorConst();
 
   static String startGen(List<ClassElement> classElements) {
     return classElements.fold('', (previousValue, element) {
@@ -48,7 +50,8 @@ abstract class Generator {
       ElementAnnotation elementAnnotation = element.metadata[index];
       final fakeModelConfig = toFakeModelConfig(elementAnnotation);
       final randomValue = fakeModelConfig.randomValue;
-      final code = _generatorSelector(randomValue).genFakeModelCode(element, randomValue);
+      final code = _generatorSelector(randomValue)
+          .genFakeModelCode(element, randomValue);
       previousValue = '$previousValue\n$code';
       return previousValue;
     });
@@ -70,7 +73,8 @@ abstract class Generator {
     return DartFormatter().format(codeOutput);
   }
 
-  String _wrapToFakeFunction(ClassElement element, String code, bool randomValue) {
+  String _wrapToFakeFunction(
+      ClassElement element, String code, bool randomValue) {
     final name = element.displayName;
     if (!randomValue) {
       final valueName = '_fake_${name}_model';
@@ -95,8 +99,8 @@ abstract class Generator {
     final className = classElement.displayName;
 
     final annotationMap = _allFakeValueConfig[className];
-    final classString =
-        classElement.unnamedConstructor!.parameters.fold('', (previousValue, element) {
+    final classString = classElement.unnamedConstructor!.parameters.fold('',
+        (previousValue, element) {
       final nextParameter = genParameterElement(
         element,
         prefix.isNotEmpty ? '${prefix}_$className' : className,
@@ -109,10 +113,12 @@ abstract class Generator {
     return '$className($classString)';
   }
 
-  String genConstructorElement(ConstructorElement element, [String prefix = '']) {
+  String genConstructorElement(ConstructorElement element,
+      [String prefix = '']) {
     final className = element.displayName;
     final annotationMap = _allFakeValueConfig[className];
-    final constructorString = element.parameters.fold('', (previousValue, element) {
+    final constructorString =
+        element.parameters.fold('', (previousValue, element) {
       final nextParameter = genParameterElement(
         element,
         prefix.isNotEmpty ? '${prefix}_$className' : className,
@@ -125,14 +131,16 @@ abstract class Generator {
     return '$className($constructorString)';
   }
 
-  String genParameterElement(ParameterElement element, String prefix, FakeValueConfig fakeConfig) {
+  String genParameterElement(
+      ParameterElement element, String prefix, FakeValueConfig fakeConfig) {
     final type = element.type;
     final propertyName = element.name;
     if (element.isOptional) {
       var feedParameter = Random().nextBool() == true;
       if (!feedParameter) return '';
     }
-    var parameterString = '${genParameterValue(type, fakeConfig, prefix, propertyName)}';
+    var parameterString =
+        '${genParameterValue(type, fakeConfig, prefix, propertyName)}';
     if (element.isRequiredNamed) {
       parameterString = '$propertyName: $parameterString';
     }
@@ -149,7 +157,8 @@ abstract class Generator {
         type.isDartAsyncStream;
   }
 
-  static Map<String, FakeValueConfig> _valueConfigMap(List<FieldElement> fields) {
+  static Map<String, FakeValueConfig> _valueConfigMap(
+      List<FieldElement> fields) {
     return fields.fold(<String, FakeValueConfig>{}, (previousValue, element) {
       final fieldName = element.name;
 
@@ -167,13 +176,15 @@ abstract class Generator {
     });
   }
 
-  static FakeValueConfig _dartObjectToFakeConfig(ElementAnnotation elementAnnotation) {
+  static FakeValueConfig _dartObjectToFakeConfig(
+      ElementAnnotation elementAnnotation) {
     final dartObject = elementAnnotation.computeConstantValue();
     String? defaultValue;
     var minValue = defConfig.minValue;
     var maxValue = defConfig.maxValue;
     var itemSize = defConfig.itemSize;
-    for (var param in (elementAnnotation.element as ConstructorElement).parameters) {
+    for (var param
+        in (elementAnnotation.element as ConstructorElement).parameters) {
       var name = param.name;
       var fieldDartObject = dartObject?.getField(name);
       switch (name) {
@@ -183,11 +194,13 @@ abstract class Generator {
           }
           break;
         case 'minValue':
-          var value = fieldDartObject?.toIntValue() ?? fieldDartObject?.toDoubleValue();
+          var value =
+              fieldDartObject?.toIntValue() ?? fieldDartObject?.toDoubleValue();
           if (value != null) minValue = value;
           break;
         case 'maxValue':
-          var value = fieldDartObject?.toIntValue() ?? fieldDartObject?.toDoubleValue();
+          var value =
+              fieldDartObject?.toIntValue() ?? fieldDartObject?.toDoubleValue();
           if (value != null) maxValue = value;
           break;
         case 'itemSize':
