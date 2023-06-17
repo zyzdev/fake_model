@@ -1,12 +1,12 @@
 import 'package:fake_model/fake_model.dart';
 
-/// [fake_model] generated 'part of' file named 'example.fake.g.dart'.
+/// [fake_model] generated 'part of' file named 'example.fake.dart'.
 /// Don't forget adding the part file.
-part 'example.fake.g.dart';
+part 'example.fake.dart';
 
 /// [FakeModel.randomValue] to decide the fake model generation function [_$PersonalInfoFromFake]
 /// to return `final model` or `new instance model`.
-/// The property value of `final model` was decided once when 'example.fake.g.dart' was generated.
+/// The property value of `final model` was decided once when 'example.fake.dart' was generated.
 /// The property value of `new instance model` will generate randomly,
 /// it means call `PersonalInfo.fromFake()` will get different result each time,
 /// except you annotating property with [FakeConfig.defaultValue].

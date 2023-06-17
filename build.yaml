@@ -3,6 +3,6 @@ builders:
   fakeBuilder:
     import: "package:fake_model/builder.dart"
     builder_factories: ["fakeBuilder"]
-    build_extensions: {".dart": [".fake.g.dart"]}
+    build_extensions: {".dart": [".fake.dart"]}
     build_to: source
     auto_apply: root_package

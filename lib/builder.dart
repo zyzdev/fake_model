@@ -18,7 +18,7 @@ class FakeBuilder implements Builder {
     final classElements = findClassWithFakeModel(entryLib);
     if (classElements.isEmpty) return;
     final modelFileName = buildStep.inputId.pathSegments.last;
-    final info = buildStep.inputId.changeExtension('.fake.g.dart');
+    final info = buildStep.inputId.changeExtension('.fake.dart');
     final code = _addFileIntroduction(
       _addPartKeyword(
         modelFileName,
@@ -34,7 +34,7 @@ class FakeBuilder implements Builder {
 
   @override
   final buildExtensions = const {
-    '.dart': ['.fake.g.dart']
+    '.dart': ['.fake.dart']
   };
 
   String _addFileIntroduction(String code) {

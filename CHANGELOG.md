@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Change generated file build extensions to `*.fake.dart`.
+
 ## 0.0.4
 
 - Remove debug log.

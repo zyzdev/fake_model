@@ -21,7 +21,7 @@ Assume there has a model class `Info` written in `info.dart` with annotation [`F
 ```dart
 import 'package:fake_model/fake_model.dart';
 
-part 'info.fake.g.dart';
+part 'info.fake.dart';
 
 @FakeModel()
 class Info {
@@ -36,7 +36,7 @@ class Info {
 }
 ```
 
-Builder generate a part code file was named `info.fake.g.dart`:
+Builder generate a part code file was named `info.fake.dart`:
 
 ```dart
 part of 'info.dart';
@@ -139,7 +139,7 @@ To design the property generation rule, you can annotate property with [`FakeCon
 ```dart
 import 'package:fake_model/fake_model.dart';
 
-part 'info.fake.g.dart';
+part 'info.fake.dart';
 
 @FakeModel()
 class Info {
