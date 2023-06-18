@@ -1,0 +1,20 @@
+name: example
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+
+dependency_overrides:
+  fake_model:
+    path: ../
+  fake_model_annotation:
+    path: ../../fake_model_annotation
+dependencies:
+  fake_model_annotation: ^0.0.1-dev.1
+dev_dependencies:
+  build_runner: ^2.4.5
+  fake_model: ^0.0.6-dev.1
+

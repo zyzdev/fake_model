@@ -1,0 +1,8 @@
+builders:
+
+  fake_model:
+    import: "package:fake_model/fake_model.dart"
+    builder_factories: ["fakeBuilder"]
+    build_extensions: {".dart": [".fake.dart"]}
+    build_to: source
+    auto_apply: root_package

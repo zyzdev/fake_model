@@ -1,0 +1,1 @@
+This an annotation for [fake_model](https://pub.dev/packages/fake_model).
