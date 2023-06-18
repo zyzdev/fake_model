@@ -1,7 +1,7 @@
 name: fake_model_annotation
 description: Annotation for fake_model code generator only. More detail see [fake_model](https://pub.dev/packages/fake_model).
-repository: https://github.com/zyzdev/fake_model/packages/fake_model_annotation
-version: 0.0.1-dev.3
+repository: https://github.com/zyzdev/fake_model/tree/main/packages/fake_model_annotation
+version: 0.0.1
 # repository: https://github.com/my_org/my_repo
 
 environment:
