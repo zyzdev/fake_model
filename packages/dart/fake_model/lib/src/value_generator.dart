@@ -1,6 +1,6 @@
 import 'dart:math';
 
-final Map<String, int> _strPropertyNameCnt = {};
+final Map<String, int> _strFieldNameCnt = {};
 
 final Random _r = Random();
 
@@ -31,13 +31,13 @@ num numGenerator({required num minValue, required num maxValue}) {
 
 String stringGenerator(
   String prefix,
-  String propertyName,
+  String fieldName,
 ) {
-  var key = '${prefix}_$propertyName';
-  var cnt = (_strPropertyNameCnt[key] ?? 0) + 1;
-  _strPropertyNameCnt[key] = cnt;
+  var key = '${prefix}_$fieldName';
+  var cnt = (_strFieldNameCnt[key] ?? 0) + 1;
+  _strFieldNameCnt[key] = cnt;
   return '\'${prefix}_'
-      '${propertyName.isNotEmpty ? '${propertyName}_' : ''}$cnt\'';
+      '${fieldName.isNotEmpty ? '${fieldName}_' : ''}$cnt\'';
 }
 
 T enumGenerator<T>(List<T> values) {

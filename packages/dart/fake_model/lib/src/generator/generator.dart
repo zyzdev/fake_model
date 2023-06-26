@@ -12,12 +12,12 @@ import 'generator_final.dart';
 
 abstract class Generator {
   static const defConfig = FakeValueConfig();
-  static Map<String, int> strPropertyNameCnt = {};
+  static Map<String, int> strFieldNameCnt = {};
 
   static final Map<String, Map<String, FakeValueConfig>> _allFakeValueConfig =
       {};
 
-  static void cleanPropertyNameCnt() => strPropertyNameCnt.clear();
+  static void cleanFieldNameCnt() => strFieldNameCnt.clear();
 
   static GeneratorRandom? _generatorRandom;
   static GeneratorConst? _generatorConst;
@@ -56,7 +56,7 @@ abstract class Generator {
   }
 
   String genFakeModelCode(ClassElement element, bool randomValue) {
-    cleanPropertyNameCnt();
+    cleanFieldNameCnt();
     if (element.unnamedConstructor == null) return '';
     final name = element.displayName;
     final codeOutput = _wrapCommonInfo(
@@ -134,21 +134,21 @@ abstract class Generator {
   String genParameterElement(
       ParameterElement element, String prefix, FakeValueConfig fakeConfig) {
     final type = element.type;
-    final propertyName = element.name;
+    final fieldName = element.name;
     if (element.isOptional) {
       var feedParameter = Random().nextBool() == true;
       if (!feedParameter) return '';
     }
     var parameterString =
-        '${genParameterValue(type, fakeConfig, prefix, propertyName)}';
+        '${genParameterValue(type, fakeConfig, prefix, fieldName)}';
     if (element.isRequiredNamed) {
-      parameterString = '$propertyName: $parameterString';
+      parameterString = '$fieldName: $parameterString';
     }
     return parameterString;
   }
 
   Object? genParameterValue(DartType type, FakeValueConfig valueConfig,
-      [String prefix = '', String propertyName = '']);
+      [String prefix = '', String fieldName = '']);
 
   bool isUnsupportedType(DartType type) {
     return type.isDartAsyncFuture ||

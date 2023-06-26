@@ -11,7 +11,7 @@ import 'generator.dart';
 class GeneratorConst extends Generator {
   @override
   Object? genParameterValue(DartType type, FakeValueConfig valueConfig,
-      [String prefix = '', String propertyName = '']) {
+      [String prefix = '', String fieldName = '']) {
     if (valueConfig.defaultValue != null) return valueConfig.defaultValue;
     var value = '';
     if (isUnsupportedType(type)) {
@@ -40,7 +40,7 @@ class GeneratorConst extends Generator {
       var constructorElement =
           type.constructors.firstWhere((element) => element.name.isEmpty);
       value = genConstructorElement(constructorElement,
-          '$prefix${propertyName.isNotEmpty ? '_$propertyName' : ''}');
+          '$prefix${fieldName.isNotEmpty ? '_$fieldName' : ''}');
     } else if (type.isDartCoreBool) {
       // boolean
       value = '${Random().nextBool()}';
@@ -71,12 +71,12 @@ class GeneratorConst extends Generator {
           ? value = '${r.nextInt(baseValue.toInt()) + minValue}'
           : value = '${r.nextDouble() * baseValue.toDouble() + minValue}';
     } else if (type.isDartCoreString) {
-      var key = '${prefix}_$propertyName';
-      var cnt = (Generator.strPropertyNameCnt[key] ?? 0) + 1;
+      var key = '${prefix}_$fieldName';
+      var cnt = (Generator.strFieldNameCnt[key] ?? 0) + 1;
       // string
       value = '\'${prefix}_'
-          '${propertyName.isNotEmpty ? '${propertyName}_' : ''}$cnt\'';
-      Generator.strPropertyNameCnt[key] = cnt;
+          '${fieldName.isNotEmpty ? '${fieldName}_' : ''}$cnt\'';
+      Generator.strFieldNameCnt[key] = cnt;
     } else if (type.isDartCoreIterable ||
         type.isDartCoreList ||
         type.isDartCoreSet) {
@@ -84,13 +84,13 @@ class GeneratorConst extends Generator {
       var values = List.generate(
           valueConfig.itemSize,
           (index) => genParameterValue(
-              typeArguments[0], valueConfig, prefix, propertyName));
+              typeArguments[0], valueConfig, prefix, fieldName));
       value = type.isDartCoreSet ? '${values.toSet()}' : '$values';
     } else if (type.isDartCoreMap) {
       var typeArguments = (type as InterfaceType).typeArguments;
       value = List.generate(valueConfig.itemSize, (index) {
         var keyAndValue = typeArguments.map(
-          (e) => genParameterValue(e, valueConfig, prefix, propertyName),
+          (e) => genParameterValue(e, valueConfig, prefix, fieldName),
         );
         return MapEntry(keyAndValue.elementAt(0), keyAndValue.elementAt(1));
       }).fold({}, (previousValue, element) {

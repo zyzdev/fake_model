@@ -79,14 +79,14 @@ class FakeConfigHelper {
   static String _genParameterElement(
       ParameterElement element, String valueString) {
     var type = element.type;
-    var propertyName = element.name;
+    var fieldName = element.name;
     if (element.isOptional) {
       var feedParameter = Random().nextBool() == true;
       if (!feedParameter) return '';
     }
     var parameterString = _genParameterValue(type, valueString);
     if (element.isRequiredNamed) {
-      parameterString = '$propertyName: $parameterString';
+      parameterString = '$fieldName: $parameterString';
     }
     return parameterString;
   }

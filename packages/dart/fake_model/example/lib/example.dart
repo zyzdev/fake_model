@@ -6,10 +6,10 @@ part 'example.fake.dart';
 
 /// [FakeModel.randomValue] to decide the fake model generation function [_$PersonalInfoFromFake]
 /// to return `final model` or `new instance model`.
-/// The property value of `final model` was decided once when 'example.fake.dart' was generated.
-/// The property value of `new instance model` will generate randomly,
+/// The field value of `final model` was decided once when 'example.fake.dart' was generated.
+/// The field value of `new instance model` will generate randomly,
 /// it means call `PersonalInfo.fromFake()` will get different result each time,
-/// except you annotating property with [FakeConfig.defaultValue].
+/// except you annotating field with [FakeConfig.defaultValue].
 @FakeModel(randomValue: false)
 class PersonalInfo {
   PersonalInfo({
@@ -24,7 +24,7 @@ class PersonalInfo {
     required this.secretInfo,
   });
 
-  /// By default, create string value by format '${Class.name}_${Property.name}_${}'.
+  /// By default, create string value by format '${Class.name}_${Field.name}_${}'.
   /// You can feed default value to field.
   @FakeConfig(defaultValue: "Jerry")
   final String name;
@@ -54,7 +54,7 @@ class PersonalInfo {
   final Map<String, Bank> bankAccounts;
 
   /// Class
-  /// Property type can be class too!
+  /// Field type can be class too!
   /// You can feed default value to field or let [fake_model] auto create it.
   @FakeConfig(
     defaultValue: SecretInfo(

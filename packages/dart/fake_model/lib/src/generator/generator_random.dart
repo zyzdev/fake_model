@@ -10,7 +10,7 @@ import 'package:fake_model/src/util.dart';
 class GeneratorRandom extends Generator {
   @override
   Object? genParameterValue(DartType type, FakeValueConfig valueConfig,
-      [String prefix = '', String propertyName = '']) {
+      [String prefix = '', String fieldName = '']) {
     if (valueConfig.defaultValue != null) return valueConfig.defaultValue;
     var value = '';
     if (isUnsupportedType(type)) {
@@ -35,7 +35,7 @@ class GeneratorRandom extends Generator {
       var constructorElement =
           type.constructors.firstWhere((element) => element.name.isEmpty);
       value = genConstructorElement(constructorElement,
-          '$prefix${propertyName.isNotEmpty ? '_$propertyName' : ''}');
+          '$prefix${fieldName.isNotEmpty ? '_$fieldName' : ''}');
     } else if (type.isDartCoreBool) {
       // boolean
       value = 'boolGenerator()';
@@ -52,7 +52,7 @@ class GeneratorRandom extends Generator {
           'numGenerator(minValue:${valueConfig.minValue}, maxValue:${valueConfig.maxValue})';
     } else if (type.isDartCoreString) {
       // string
-      value = 'stringGenerator(\'$prefix\', \'$propertyName\')';
+      value = 'stringGenerator(\'$prefix\', \'$fieldName\')';
     } else if (type.isDartCoreIterable ||
         type.isDartCoreList ||
         type.isDartCoreSet) {
@@ -60,13 +60,13 @@ class GeneratorRandom extends Generator {
       final values = List.generate(
           valueConfig.itemSize,
           (index) => genParameterValue(
-              typeArguments[0], valueConfig, prefix, propertyName));
+              typeArguments[0], valueConfig, prefix, fieldName));
       value = type.isDartCoreSet ? '${values.toSet()}' : '$values';
     } else if (type.isDartCoreMap) {
       final typeArguments = (type as InterfaceType).typeArguments;
       value = List.generate(valueConfig.itemSize, (index) {
         final keyAndValue = typeArguments.map(
-          (e) => genParameterValue(e, valueConfig, prefix, propertyName),
+          (e) => genParameterValue(e, valueConfig, prefix, fieldName),
         );
         return MapEntry(keyAndValue.elementAt(0), keyAndValue.elementAt(1));
       }).fold({}, (previousValue, element) {

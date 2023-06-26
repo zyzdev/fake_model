@@ -8,10 +8,10 @@ part of 'example.dart';
 // ==========================================================================
 final _fakePersonalInfo = PersonalInfo(
   name: 'Jerry',
-  married: false,
-  age: -67,
+  married: true,
+  age: -11,
   height: null,
-  weight: 43.0,
+  weight: null,
   gender: Gender.female,
   friends: [
     'PersonalInfo_friends_1',
@@ -20,10 +20,10 @@ final _fakePersonalInfo = PersonalInfo(
   ],
   bankAccounts: {
     'PersonalInfo_bankAccounts_1': Bank(
-      911,
+      4241,
     ),
     'PersonalInfo_bankAccounts_2': Bank(
-      6224,
+      434,
     )
   },
   secretInfo: SecretInfo(

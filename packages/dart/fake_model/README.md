@@ -4,18 +4,18 @@ Provides [dart build system] builder to generate `fake model generation function
 
 Annotation [`FakeModel`] and [`FakeConfig`] defined builder to find which model class you want to
 generate `fake model generation function` and
-generation configuration of property value.
+generation configuration of field value.
 
 * To decide the model class you want to generate `fake model generation function`, you should annotate it
   with [`FakeModel`].
 
 
-* To generate a class model property, you can annotate it with [`FakeConfig`] to config the value generation rule.
+* To generate a class model field, you can annotate it with [`FakeConfig`] to config the value generation rule.
 
 ## Install
 
 To use `fake_model`, it based on [`build_runner`] to generate codes, and based on annotation [`FakeModel`]
-and [`FakeConfig`] to find the model class and property value generation rule.
+and [`FakeConfig`] to find the model class and field value generation rule.
 
 The project `pubspec.yaml` should add [`fake_model_annotation`] to dependencies, add [`build_runner`] and [`fake_model`]
 to
@@ -54,7 +54,7 @@ dev_dependencies:
 
 More info see [example].
 
-[`fake_model`] based on annotation [`FakeModel`]and [`FakeConfig`] to find the model class and property value generation rule.
+[`fake_model`] based on annotation [`FakeModel`]and [`FakeConfig`] to find the model class and field value generation rule.
 
 A model class you would like to generate `fake model generation function` by [`fake_model`] should add following code first:
 ```dart
@@ -120,13 +120,13 @@ cd $YOUR_PROJECT_ROOT_PATH
 flutter pub run build_runner build
 ```
 
-## Property supported types
+## Field supported types
 
 [`bool`], [`double`], [`Enum`], [`int`], [`Iterable`], [`List`], [`Map`], [`num`], [`Object`], [`Set`], [`String`]
 
-## Default property value generation rules
+## Default field value generation rules
 
-Following table shows the value generation rule for supported types. You can change the rule by annotate property
+Following table shows the value generation rule for supported types. You can change the rule by annotate field
 with [`FakeConfig`].
 
 | Type         | Rule                                                                                              |
@@ -136,19 +136,19 @@ with [`FakeConfig`].
 | [`int`]      | random value, 0 - 10000                                                                           |
 | [`double`]   | random value, 0 - 10000                                                                           |
 | [`Enum`]     | randomly choose one of the types in the enum                                                      |
-| [`String`]   | generate string by format '${class name}\_${property name}\_${generation count of this property}' |
+| [`String`]   | generate string by format '${class name}\_${field name}\_${generation count of this field}' |
 | [`Iterable`] | generate one item only                                                                            |
 | [`List`]     | generate one item only                                                                            |
 | [`Set`]      | generate one item only                                                                            |
 | [`Map`]      | generate one item only                                                                            |
 
-## Custom property value generation rule
+## Custom field value generation rule
 
 More info see [example].
 
 ### @FakeModel
 
-By default, the `fake model generation function` return fake model with difference value of property(s) called each
+By default, the `fake model generation function` return fake model with difference value of field(s) called each
 time.
 
 Set `@FakeModel(randomValue: false)` let builder to generates final variable for `fake model generation function` to
@@ -160,7 +160,7 @@ See difference of `fake model generation function` shown below:
 By default, `@FakeModel(randomValue: true)`:
 
 ```dart
-// property value was regenerated different values each time 
+// field value was regenerated different values each time 
 Info _$InfoFromFake() =>
     Info(
       age: 18,
@@ -176,7 +176,7 @@ Info _$InfoFromFake() =>
 When `@FakeModel(randomValue: false)`:
 
 ```dart
-// always return final variable, the property value never change
+// always return final variable, the field value never change
 final _fake_Info_model = Info(
   age: 18,
   chanceOfRain: 57.415846441589835,
@@ -188,7 +188,7 @@ Info _$InfoFromFake() => _fake_Info_model;
 
 ### @FakeConfig
 
-To design the property generation rule, you can annotate property with [`FakeConfig`].
+To design the field generation rule, you can annotate field with [`FakeConfig`].
 
 ```dart
 import 'package:fake_model/fake_model.dart';
@@ -230,7 +230,7 @@ Info _$InfoFromFake() =>
     );
 ```
 
-[example]: https://github.com/zyzdev/fake_model/tree/main/example
+[example]: https://github.com/zyzdev/fake_model/tree/main/packages/dart/fake_model/example
 
 [dart build system]: https://github.com/dart-lang/build
 

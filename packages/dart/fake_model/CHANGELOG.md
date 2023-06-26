@@ -1,4 +1,12 @@
-## 0.0.6-dev.2
+## 0.0.8
+
+- Update doc.
+
+## 0.0.7
+
+- Update doc.
+
+## 0.0.6
 
 - Split annotation [`FakeModel`] and [`FakeConfig`] to package [`fake_model_annotation`].
 
