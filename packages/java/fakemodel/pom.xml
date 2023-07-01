@@ -7,11 +7,11 @@
 
   <groupId>dev.zyzdev</groupId>
   <artifactId>fakemodel</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Provide a java library to create fake data model.</description>
-  <url>https://github.com/zyzdev/fake_model/tree/feature/java/packages/java/fakemodel</url>
+  <url>https://github.com/zyzdev/fake_model/tree/main/packages/java/fakemodel</url>
 
   <licenses>
     <license>
@@ -22,7 +22,7 @@
   <scm>
     <connection>scm:git:git://github.com:zyzdev/fake_model.git</connection>
     <developerConnection>scm:git:ssh://github.com:zyzdev/fake_model.git</developerConnection>
-    <url>https://github.com/zyzdev/fake_model/tree/feature/java/packages/java/fakemodel</url>
+    <url>https://github.com/zyzdev/fake_model/tree/main/packages/java/fakemodel</url>
   </scm>
 
   <developers>
